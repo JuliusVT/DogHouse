@@ -1,0 +1,24 @@
+:root {
+    --gridList-column: 1fr;
+    --gridList-gap: 6px;
+  }
+  
+  .ListOfDogs {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: var(--gridList-column);
+    gap: var(--gridList-gap) 6px;
+    align-items: center;
+  }
+  
+  @media screen and (min-width: 37.5rem) {
+    :root {
+      --gridList-column: 1fr 1fr;
+    }
+  }
+  
+  @media screen and (min-width: 60rem) {
+    :root {
+      --gridList-column: 1fr 1fr 1fr;
+    }
+  }
