@@ -22,6 +22,7 @@
   margin: 10px auto;
   padding: 20px 0;
   width: 144px;
+  cursor: pointer;
 }
 
 .App-logo img {
