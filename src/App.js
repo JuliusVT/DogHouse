@@ -2,7 +2,7 @@ import './App.css'
 import Home from './pages/Home'
 import SearchResults from './pages/SearchResults'
 import Detail from './pages/Detail'
-
+import {DogsContextProvider} from './context/DogsContext'
 import { Link, Route } from 'wouter'
 
 export default function App() {
@@ -12,6 +12,7 @@ export default function App() {
         <Link to="/">
           <img className="App-logo" alt='Dogs Logo' src='/dog-house-logo.png'/>
         </Link>
+        <DogsContextProvider>
         <Route 
           component={Home}
           path="/"
@@ -24,6 +25,7 @@ export default function App() {
           component={Detail}
           path="/dog/:id"
         />
+        </DogsContextProvider>
       </section>
     </div>
   );

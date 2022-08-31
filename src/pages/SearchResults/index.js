@@ -17,7 +17,7 @@ export default function SearchResults({params}) {
                   {loading 
                     ? <Spinner />
                     :
-                    <ListOfDogs dogs={dogs}/>
+                    <ListOfDogs dogsIds={dogs}/>
                   }
               </div>
           </div>

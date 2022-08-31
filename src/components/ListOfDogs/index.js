@@ -4,9 +4,9 @@ import { useDogImages } from '../../hooks/useDogImages'
 import './ListOfDogs.css'
 import Spinner from '../Spinner'
 
-export default function ListOfDogs({dogs}) {
-	const { id , message } = dogs
-	const { dogImages, loading } = useDogImages({ id });
+export default function ListOfDogs({dogsIds}) {
+	const { id , message } = dogsIds
+	const { dogs, loading } = useDogImages({ id });
 	
 	return (
 		<>
@@ -19,7 +19,7 @@ export default function ListOfDogs({dogs}) {
       :
 			<div className='ListOfDogs'>
 				{
-					dogImages.map(dog => <Dog key={dog.id} id={dog.id} title={dog.name} url={dog.url} />)
+					dogs.map(dog => <Dog key={dog.id} id={dog.id} title={dog.name} url={dog.url} />)
 				}
 			</div>
 		}

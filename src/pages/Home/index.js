@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import ListOfDogs from '../../components/ListOfDogs';
 import { useDogs } from '../../hooks/useDogs';
 import Spinner from '../../components/Spinner';
@@ -17,7 +17,7 @@ export default function Home() {
                         loading 
                             ? <Spinner />
                             :
-                            <ListOfDogs dogs={dogs}/>
+                            <ListOfDogs dogsIds={dogs}/>
                     }
                 </div>
             </div>
