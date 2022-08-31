@@ -1,19 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import { searchDogs }  from '../../services/theDogApi';
+import React, { useCallback } from 'react'
 import ListOfDogs from '../../components/ListOfDogs';
+import { useDogs } from '../../hooks/useDogs';
+import Spinner from '../../components/Spinner';
+import SearchForm from '../../components/SearchForm';
 
 export default function Home() {
-    const [dogs, setDogs] = useState([]);
+    const { dogs, loading } = useDogs() 
 
-    useEffect(() => {
-        searchDogs().then(data => setDogs(data))
-    }, [])
     return ( 
         <div className='App-wrapper'>
+            <SearchForm />
             <div className='App-main'>
                 <div className='App-results'>
                     <h3 className='App-title'>Última búsqueda</h3>
-                    <ListOfDogs dogs={dogs}/>
+                    {
+                        loading 
+                            ? <Spinner />
+                            :
+                            <ListOfDogs dogs={dogs}/>
+                    }
                 </div>
             </div>
         </div>

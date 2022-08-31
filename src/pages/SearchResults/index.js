@@ -1,10 +1,26 @@
 import React from 'react'
+import ListOfDogs from '../../components/ListOfDogs';
+import Spinner from '../../components/Spinner';
+import { useDogs } from '../../hooks/useDogs';
+import SearchForm from '../../components/SearchForm';
 
+export default function SearchResults({params}) {
+    const { keyword } = params
+    const { dogs, loading } = useDogs({ keyword }) 
 
-export default function SearchResults() {
     return ( 
-        <div>
-            <h1>Result of Search</h1>
-        </div>
+      <div className='App-wrapper'>
+          <SearchForm />
+          <div className='App-main'>
+              <div className='App-results'>
+                  <h3 className='App-title'>{keyword}</h3>
+                  {loading 
+                    ? <Spinner />
+                    :
+                    <ListOfDogs dogs={dogs}/>
+                  }
+              </div>
+          </div>
+      </div>
      );
 }

@@ -10,7 +10,7 @@ export default function App() {
     <div className="App">
       <section className="App-content">
         <Link to="/">
-          <img className="App-logo" alt='Dogs Logo' src='./dog-house-logo.png'/>
+          <img className="App-logo" alt='Dogs Logo' src='/dog-house-logo.png'/>
         </Link>
         <Route 
           component={Home}
