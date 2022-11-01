@@ -4,7 +4,7 @@ import { searchDogs }  from '../services/theDogApi';
 export function useDogs ({ keyword } = {keyword: null}) {
     const [loading, setLoading] = useState(false);
     const [dogs, setDogs] = useState([]);
-
+    const [keytitle, setKeytitle] = useState('')
     useEffect(() => {
         setLoading(true)
         const KeywordToUse = keyword ?  keyword : localStorage.getItem('lastKeyword') || 'Alaskan Malamute';
@@ -15,7 +15,8 @@ export function useDogs ({ keyword } = {keyword: null}) {
                 localStorage.setItem('lastKeyword',keyword)
             } 
         })
+        setKeytitle(KeywordToUse)
     }, [keyword])
 
-    return { dogs, loading }
+    return { dogs, loading, keytitle }
 }
