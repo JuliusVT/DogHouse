@@ -33,8 +33,9 @@ export const getImageDog = async (breed_id) => {
     const data = await res.json()
     const dogs = data.map(dog => {
         const { id, url } = dog;
-        const { name } = dog.breeds[0]
-        return { id, url, name}
+        const { name } = dog.breeds[0];
+        const additional = dog.breeds[0];
+        return { id, url, name , additional}
     })
     return dogs
 }

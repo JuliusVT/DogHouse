@@ -10,9 +10,11 @@ export function useDogImages({ id } = {id: null}) {
 	useEffect(() => {
 		if(id)
 		{
+      localStorage.removeItem('dogs')
       setLoading(true)
 			getImageDog(id).then(data => {
         setDogs(data)
+        localStorage.setItem('dogs', JSON.stringify(data))
         setLoading(false)
       })
 		}

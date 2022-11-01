@@ -33,6 +33,7 @@
 .App-title {
   color: var(--theme-body-txt);
   margin-top: 0.6rem;
+  margin-bottom: 1.5rem;
 }
 
 .App-content {
