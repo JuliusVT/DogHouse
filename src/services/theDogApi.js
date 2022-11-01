@@ -1,50 +1,41 @@
 import { apiKey, apiURL } from "../constants"
 
-export const getDogs = async () => {
-    const limit = 9
-    const page = 0
-    const getDogsApi = `${apiURL}breeds?page=${page}&limit=${limit}`
+export const searchDogs = async ({ keyword = '' }) => {
+    const searchDogs = `${apiURL}breeds/search?q=${keyword}`
 
-    const res = await fetch(getDogsApi,{
-        method: 'GET',
-        headers: {
-            'x-api-key': apiKey
-        }
-    })
-    const data = await res.json()
-    const dogs = data.map(dog => {
-        const { id, name, reference_image_id } = dog
-        return { id, name, reference_image_id}
-    })
-    return dogs
-}
-export const searchDogs = async (params = 'Bull Terrier') => {
-    const searchDogs = `${apiURL}breeds/search?q=${params}`
-    
     const res = await fetch(searchDogs, {
         method: 'GET',
         headers: {
             'x-api-key': apiKey
         }
     })
-    const data = await res.json()
-    const dogs = data.map(dog => {
-        const { id, name , reference_image_id } = dog
-        return { id, name, reference_image_id }
+    const data = await res.json().then(response => {
+        const { id } = response[0];
+        return { id }
     })
-    return dogs
+    .catch(error => {
+        console.log('hubo un problema con la peticion fetch: ' + error);
+        return { message: `${keyword} doesn't exist in the API`}
+    })
+    return data
+
 }
 
-export const getImageDog = async (reference_image_id) => {
-    const imageDog = `${apiURL}images/${reference_image_id}`
+export const getImageDog = async (breed_id) => {
+    const searchDogImages= `${apiURL}images/search?limit=9&size=full&breed_id=${breed_id}`
 
-    const res = await fetch(imageDog, {
+    const res = await fetch(searchDogImages, {
         method: 'GET',
         headers: {
             'x-api-key': apiKey
         }
     })
     const data = await res.json()
-    const { url } = data
-    return url
+    const dogs = data.map(dog => {
+        const { id, url } = dog;
+        const { name } = dog.breeds[0];
+        const additional = dog.breeds[0];
+        return { id, url, name , additional}
+    })
+    return dogs
 }

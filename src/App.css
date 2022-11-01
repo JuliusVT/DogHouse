@@ -22,6 +22,7 @@
   margin: 10px auto;
   padding: 20px 0;
   width: 144px;
+  cursor: pointer;
 }
 
 .App-logo img {
@@ -32,6 +33,7 @@
 .App-title {
   color: var(--theme-body-txt);
   margin-top: 0.6rem;
+  margin-bottom: 1.5rem;
 }
 
 .App-content {
