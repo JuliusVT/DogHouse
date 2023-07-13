@@ -1,7 +1,7 @@
 :root {
   --fz: 16px;
   --theme--contrast-0: #121212;
-  --theme-body-bg: #ffffff;
+  --theme-body-bg: linear-gradient(rgb(255, 255, 255), 50%, rgb(62, 186, 160, 0.2));
   --theme-body-txt: #3ebaa0; /* #18061f */
   --search-size-mx-h: 3rem;
   --zIndex-header: 20;
@@ -37,7 +37,7 @@
 }
 
 .App-content {
-  background-color: var(--theme-body-bg);
+  background: var(--theme-body-bg);
   color: var(--theme-body-txt);
   display: flex;
   flex-direction: column;

@@ -8,9 +8,16 @@ export default function Detail({params}) {
     const dog = dogs.find(singleDog => singleDog.id === params.id) || JSON.parse(localStorage.getItem('dogs')).find(singleDog => singleDog.id === params.id)
     return ( 
         <div>
-          <Link to="/"> Regresar </Link>
-          <h3 className='App-title'>{ dog.name }</h3>
-          <div className='grid grid-cols-2 gap-48'>
+          <div className='inline-flex mb-6 mt-[0.6rem]'>
+            <Link to='/' className='text-white bg-[#3ebaa0] hover:bg-[#23ab8d] focus:ring-2 focus:outline-none focus:ring-[#87e9d4]  font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 h-fit'>
+              <svg className='sm:w-4 sm:h-4 md:w-4 md:h-4 lg:w-4 lg:h-4 w-3 h-3 rotate-180' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 14 10'>
+                <path stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M1 5h12m0 0L9 1m4 4L9 9'/>
+              </svg>
+              <span className='sr-only'>Icon description</span>
+            </Link>
+            <h3 className=''>{ dog.name }</h3>
+          </div>
+          <div className='grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-10 lg:gap-48 md:gap-48'>
             <div className=''>
               <Dog {...dog}/>
             </div>
